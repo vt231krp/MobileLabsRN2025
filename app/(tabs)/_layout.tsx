@@ -22,18 +22,12 @@ const MainNavigation = () => {
           borderTopColor: theme.border,
           height: 60,
           paddingBottom: 8,
+          paddingTop: 10,
         },
         tabBarActiveTintColor: theme.tabBarActive,
         tabBarInactiveTintColor: theme.tabBarInactive,
-        headerStyle: {
-          backgroundColor: theme.primary,
-          borderBottomWidth: 1,
-          borderBottomColor: theme.border,
-        },
-        headerTintColor: theme.textPrimary,
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
+        headerShown: false,
+        tabBarShowLabel: false,
       }}
     >
       <Tab.Screen
