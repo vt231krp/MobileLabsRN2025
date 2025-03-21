@@ -2,6 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 import { useTheme } from "@/theme/ThemeContext";
+import { Image } from "react-native";
+import BitmapImage from "@/assets/images/Bitmap.png";
 
 import StoreScreen from "./index";
 import CommunityScreen from "./community";
@@ -71,7 +73,10 @@ const MainNavigation = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Feather name="user" color={color} size={size} />
+            <Image
+              source={BitmapImage}
+              style={{ width: size, height: size, borderRadius: 50 }}
+            />
           ),
         }}
       />
