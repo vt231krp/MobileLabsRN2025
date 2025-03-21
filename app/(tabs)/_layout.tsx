@@ -19,7 +19,7 @@ const MainNavigation = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: theme.tabBarBackground,
+          backgroundColor: theme.primary,
           borderTopColor: theme.border,
           height: 60,
           paddingBottom: 8,

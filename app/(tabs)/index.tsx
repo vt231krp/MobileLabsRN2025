@@ -1,11 +1,16 @@
 import React from "react";
-import { View } from "react-native";
-import ScreenTitle from "../../components/ScreenTtile";
+import ScreenHeader from "../../components/ScreenHeader";
+import styled from "styled-components/native";
 
 export default function StoreScreen() {
   return (
-    <View>
-      <ScreenTitle title="Store" />
-    </View>
+    <Container>
+      <ScreenHeader title="Store" search />
+    </Container>
   );
 }
+
+const Container = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.secondary};
+`;
