@@ -1,0 +1,16 @@
+export const darkTheme = {
+  primary: "#171a21",
+  secondary: "#1b2838",
+  accent: "#66c0f4",
+  textPrimary: "#ffffff",
+  textSecondary: "#acb2b8",
+  border: "#2a3f5a",
+  button: "#66c0f4",
+  buttonText: "#ffffff",
+  cardBackground: "#2a3f5a",
+  success: "#a4d007",
+  error: "#d32f2f",
+  tabBarBackground: "#171a21",
+  tabBarActive: "#66c0f4",
+  tabBarInactive: "#acb2b8",
+};

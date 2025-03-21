@@ -1,0 +1,16 @@
+export const lightTheme = {
+  primary: "#f8f9fa",
+  secondary: "#e9ecef",
+  accent: "#1b6ec2",
+  textPrimary: "#212529",
+  textSecondary: "#495057",
+  border: "#dee2e6",
+  button: "#1b6ec2",
+  buttonText: "#ffffff",
+  cardBackground: "#ffffff",
+  success: "#28a745",
+  error: "#dc3545",
+  tabBarBackground: "#f8f9fa",
+  tabBarActive: "#1b6ec2",
+  tabBarInactive: "#6c757d",
+};

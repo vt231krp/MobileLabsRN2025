@@ -1,45 +1,88 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Feather } from "@expo/vector-icons";
+import { useTheme } from "@/theme/ThemeContext";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import StoreScreen from "./index";
+import CommunityScreen from "./community";
+import ChatScreen from "./chat";
+import SafetyScreen from "./safety";
+import ProfileScreen from "./profile";
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const Tab = createBottomTabNavigator();
+
+const MainNavigation = () => {
+  const { theme } = useTheme();
 
   return (
-    <Tabs
+    <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
+        tabBarStyle: {
+          backgroundColor: theme.tabBarBackground,
+          borderTopColor: theme.border,
+          height: 60,
+          paddingBottom: 8,
+        },
+        tabBarActiveTintColor: theme.tabBarActive,
+        tabBarInactiveTintColor: theme.tabBarInactive,
+        headerStyle: {
+          backgroundColor: theme.primary,
+          borderBottomWidth: 1,
+          borderBottomColor: theme.border,
+        },
+        headerTintColor: theme.textPrimary,
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Store"
+        component={StoreScreen}
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="shopping-bag" color={color} size={size} />
+          ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
+      <Tab.Screen
+        name="Community"
+        component={CommunityScreen}
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="users" color={color} size={size} />
+          ),
         }}
       />
-    </Tabs>
+      <Tab.Screen
+        name="Chat"
+        component={ChatScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="message-circle" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Safety"
+        component={SafetyScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="shield" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="user" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
-}
+};
+
+export default MainNavigation;
