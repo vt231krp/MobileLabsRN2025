@@ -1,9 +1,8 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
-import { useTheme } from "@/theme/ThemeContext";
 import { Image } from "react-native";
-import BitmapImage from "@/assets/images/Bitmap.png";
+import { useTheme } from "styled-components/native";
 
 import StoreScreen from "./index";
 import CommunityScreen from "./community";
@@ -14,7 +13,7 @@ import ProfileScreen from "./profile";
 const Tab = createBottomTabNavigator();
 
 const MainNavigation = () => {
-  const { theme } = useTheme();
+  const theme = useTheme();
 
   return (
     <Tab.Navigator
@@ -74,7 +73,7 @@ const MainNavigation = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Image
-              source={BitmapImage}
+              source={require("../../assets/images/Profile.png")}
               style={{ width: size, height: size, borderRadius: 50 }}
             />
           ),
