@@ -13,6 +13,9 @@ export default function ChatScreen() {
       if (b.isUnread !== a.isUnread) {
         return b.isUnread ? 1 : -1;
       }
+      if (b.isMyLastMessage !== a.isMyLastMessage) {
+        return b.isMyLastMessage ? 1 : -1;
+      }
       return (b.unreadMessages || 0) - (a.unreadMessages || 0);
     })
   );
@@ -24,6 +27,9 @@ export default function ChatScreen() {
         .sort((a, b) => {
           if (b.isUnread !== a.isUnread) {
             return b.isUnread ? 1 : -1;
+          }
+          if (b.isMyLastMessage !== a.isMyLastMessage) {
+            return b.isMyLastMessage ? 1 : -1;
           }
           return (b.unreadMessages || 0) - (a.unreadMessages || 0);
         })
