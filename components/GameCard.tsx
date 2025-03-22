@@ -91,7 +91,7 @@ const OldPrice = styled.Text`
 `;
 
 const NewPrice = styled.Text`
-  color: #ffffff;
+  color: ${({ theme }) => theme.textPrimary};
 `;
 
 const Discount = styled.Text`
