@@ -3,12 +3,15 @@ import ScreenHeader from "../../components/ScreenHeader";
 import styled from "styled-components/native";
 import RecSlider from "../../components/RecSlider";
 import { recommendations } from "../../data/recommendations";
+import { games } from "../../data/games";
+import GameList from "../../components/GameList";
 
 export default function StoreScreen() {
   return (
     <Container>
       <ScreenHeader title="Store" search />
       <RecSlider recs={recommendations} />
+      <GameList games={games} />
     </Container>
   );
 }

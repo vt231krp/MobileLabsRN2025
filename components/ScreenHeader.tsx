@@ -41,7 +41,7 @@ const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  margin-bottom: 10px;
 `;
 
 const LogoContainer = styled.View`
