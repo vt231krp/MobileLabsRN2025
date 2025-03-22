@@ -26,3 +26,20 @@ export interface IPost {
   tags?: string[];
   isNews: boolean;
 }
+
+export interface IChat {
+  id: string;
+  userName: string;
+  userImage: any;
+  lastMessage: string;
+  lastMessageTime: number;
+  isUnread: boolean;
+  unreadMessages: number;
+  isOnline: boolean;
+  isFriend: boolean;
+}
+
+export interface ITab {
+  id: string;
+  label: string;
+}
