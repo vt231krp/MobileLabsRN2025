@@ -4,11 +4,9 @@ import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 import ScreenHeader from "../../components/ScreenHeader";
 import Tabs from "../../components/Tabs";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import { useTheme } from "styled-components/native";
+import CardActions from "../../components/CardActions";
 
 export default function SafetyScreen() {
-  const theme = useTheme();
   const [activeTab, setActiveTab] = useState("guard");
 
   const actions = ["Remove Authenticator", "My Recovery Code", "Help"];
@@ -56,17 +54,7 @@ export default function SafetyScreen() {
         when you sign in to the PC client to enter your password and
         authenticator code less often.
       </Tip>
-      <ActionContainer>
-        {actions.map((action, index) => (
-          <React.Fragment key={action}>
-            <ActionButton onPress={() => console.log(`Pressed ${action}`)}>
-              <ActionButtonText>{action}</ActionButtonText>
-              <AntDesign name="right" size={15} color={theme.icon} />
-            </ActionButton>
-            {index < actions.length - 1 && <ActionSeparator />}
-          </React.Fragment>
-        ))}
-      </ActionContainer>
+      <CardActions actions={actions} />
     </Container>
   );
 }
@@ -146,29 +134,4 @@ const Label = styled.Text`
 const Tip = styled(Label)`
   color: ${({ theme }) => theme.accent};
   margin-bottom: 20px;
-`;
-
-const ActionContainer = styled.View`
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 0 15px;
-  background-color: ${({ theme }) => theme.cardBackground};
-`;
-
-const ActionButton = styled.TouchableOpacity`
-  padding: 15px 18px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const ActionButtonText = styled.Text`
-  color: ${({ theme }) => theme.textPrimary};
-  font-size: 14px;
-  line-height: 22px;
-`;
-
-const ActionSeparator = styled.View`
-  height: 1px;
-  background-color: ${({ theme }) => theme.border};
 `;
