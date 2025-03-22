@@ -1,6 +1,6 @@
 import { IGame } from "../types";
 
-export const games = <IGame[]>[
+export const games: IGame[] = [
   {
     id: "grand-theft-auto-v",
     name: "Grand Theft Auto V",

@@ -23,10 +23,10 @@ export default function GameCard({ game }: GameCardProps) {
       </GameContent>
       <PriceContainer>
         <PriceInfo>
-          <OldPrice>${oldPrice}</OldPrice>
+          {oldPrice > 0 && <OldPrice>${oldPrice}</OldPrice>}
           <NewPrice>${price}</NewPrice>
         </PriceInfo>
-        <Discount>-{discountPercentage}%</Discount>
+        {discountPercentage > 0 && <Discount>-{discountPercentage}%</Discount>}
       </PriceContainer>
     </Container>
   );
