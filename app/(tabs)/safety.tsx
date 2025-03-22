@@ -1,13 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useContext } from "react";
 import { ImageBackground } from "react-native";
 import styled from "styled-components/native";
 import { LinearGradient } from "expo-linear-gradient";
 import ScreenHeader from "../../components/ScreenHeader";
 import Tabs from "../../components/Tabs";
 import CardActions from "../../components/CardActions";
+import { ThemeContext } from "../_layout";
 
 export default function SafetyScreen() {
   const [activeTab, setActiveTab] = useState("guard");
+
+  const { mode } = useContext(ThemeContext);
 
   const actions = ["Remove Authenticator", "My Recovery Code", "Help"];
 
@@ -27,14 +30,16 @@ export default function SafetyScreen() {
             source={require("../../assets/images/safety-bg.png")}
             resizeMode="cover"
           />
-          <GradientOverlay
-            colors={[
-              "rgba(28, 32, 44, 1)",
-              "rgba(28, 32, 44, 0.5)",
-              "rgba(28, 32, 44, 0)",
-            ]}
-            locations={[0, 0.6, 1]}
-          />
+          {mode === "dark" ? (
+            <GradientOverlay
+              colors={[
+                "rgba(28, 32, 44, 1)",
+                "rgba(28, 32, 44, 0.5)",
+                "rgba(28, 32, 44, 0)",
+              ]}
+              locations={[0, 0.6, 1]}
+            />
+          ) : null}
         </BackgroundImageContainer>
 
         <Content>
@@ -104,7 +109,7 @@ const CodeLabel = styled.Text`
 const Code = styled.Text`
   font-size: 57px;
   font-weight: 700;
-  color: ${({ theme }) => theme.textPrimary};
+  color: #ffffff;
 `;
 
 const ProgressBar = styled.View`
