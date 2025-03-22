@@ -27,16 +27,25 @@ export interface IPost {
   isNews: boolean;
 }
 
+export enum UserStatus {
+  ONLINE = "ONLINE",
+  IN_GAME = "IN_GAME",
+  OFFLINE = "OFFLINE",
+  AWAY = "AWAY",
+  BUSY = "BUSY",
+}
+
 export interface IChat {
   id: string;
   userName: string;
   userImage: any;
   lastMessage: string;
   lastMessageTime: number;
+  isMyLastMessage: boolean;
   isUnread: boolean;
   unreadMessages: number;
-  isOnline: boolean;
   isFriend: boolean;
+  status?: UserStatus;
 }
 
 export interface ITab {
