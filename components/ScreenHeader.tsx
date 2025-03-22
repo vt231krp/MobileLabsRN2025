@@ -19,7 +19,9 @@ export default function ScreenHeader({
   return (
     <Container>
       <LogoContainer>
-        <LogoImage source={require("./../assets/images/SteamIcon.png")} />
+        <ImageContainer>
+          <LogoImage source={require("./../assets/images/SteamIcon.png")} />
+        </ImageContainer>
         <Title>{title}</Title>
       </LogoContainer>
       {search && (
@@ -43,6 +45,15 @@ const Container = styled.View`
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px 20px;
+`;
+
+const ImageContainer = styled.View`
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #1c202c;
+  align-items: center;
+  justify-content: center;
 `;
 
 const LogoContainer = styled.View`
