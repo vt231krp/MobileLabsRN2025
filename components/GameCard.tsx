@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { IGame } from "../../types";
+import { IGame } from "../types";
 
 interface GameCardProps {
   game: IGame;
@@ -16,7 +16,7 @@ export default function GameCard({ game }: GameCardProps) {
         <GameInfo>
           <GameName>{name}</GameName>
           <OsContainer>
-            <OsImage source={require("../../assets/images/windows.png")} />
+            <OsImage source={require("../assets/images/windows.png")} />
             <OsName>{os}</OsName>
           </OsContainer>
         </GameInfo>

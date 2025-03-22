@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { IRecommendation } from "../../types";
+import { IRecommendation } from "../types";
 
 interface SliderCardProps {
   recommendation: IRecommendation;
@@ -33,7 +33,7 @@ export default function SliderCard({ recommendation }: SliderCardProps) {
       </Content>
       <OsContainer>
         {os === "Windows" && (
-          <OsImage source={require("../../assets/images/windows.png")} />
+          <OsImage source={require("../assets/images/windows.png")} />
         )}
       </OsContainer>
     </Container>

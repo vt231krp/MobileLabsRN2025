@@ -19,5 +19,5 @@ export default function StoreScreen() {
 const Container = styled.View`
   flex: 1;
   background-color: ${(props) => props.theme.secondary};
-  padding: 10px;
+  padding: 20px;
 `;

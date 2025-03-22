@@ -2,8 +2,8 @@ import { IGame } from "../types";
 import styled from "styled-components/native";
 import { FlatList, View } from "react-native";
 import React, { useState, useEffect } from "react";
-import GameCard from "./GameCard/GameCard";
-import FilterButton from "./FilterButton/FilterButton";
+import GameCard from "./GameCard";
+import FilterButton from "./FilterButton";
 
 interface GameListProps {
   games: IGame[];
