@@ -136,7 +136,6 @@ export default function StoreScreen() {
     <Container>
       <ScreenHeader title="Store" search />
       <Content>
-        <SectionTitle>Featured & Recommended</SectionTitle>
         <SliderContainer>
           <FlatList
             horizontal
@@ -148,7 +147,6 @@ export default function StoreScreen() {
           />
         </SliderContainer>
 
-        <SectionTitle>Special Offers</SectionTitle>
         <GamesContainer>
           <Filters>
             <FlatList
@@ -210,14 +208,6 @@ const Container = styled.View`
 
 const Content = styled.View`
   flex: 1;
-`;
-
-const SectionTitle = styled.Text`
-  color: ${({ theme }) => theme.textPrimary};
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 22px;
-  padding: 10px 15px;
 `;
 
 const SliderContainer = styled.View`
