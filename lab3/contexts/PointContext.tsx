@@ -13,11 +13,19 @@ export const PointProvider = ({ children }: { children: ReactNode }) => {
   const [score, setScore] = useState<number>(0);
 
   const incPoints = (points: number) => {
-    score + points > 0 ? setScore(score + points) : setScore(0);
+    if (score + points > 0) {
+      setScore(score + points);
+    } else {
+      setScore(0);
+    }
   };
 
   const decPoints = (points: number) => {
-    score - points > 0 ? setScore(score - points) : setScore(0);
+    if (score - points > 0) {
+      setScore(score - points);
+    } else {
+      setScore(0);
+    }
   };
 
   const resetPoints = () => {
