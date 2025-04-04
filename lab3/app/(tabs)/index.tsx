@@ -118,7 +118,7 @@ export default function HomeScreen() {
 
   const leftSwipe = Gesture.Fling()
     .direction(Directions.LEFT)
-    .onStart(() => {
+    .onEnd(() => {
       console.log("Left swipe detected");
       incPoints(10);
 
@@ -132,7 +132,7 @@ export default function HomeScreen() {
 
   const rightSwipe = Gesture.Fling()
     .direction(Directions.RIGHT)
-    .onBegin(() => {
+    .onEnd(() => {
       console.log("Right swipe detected");
       incPoints(10);
 
