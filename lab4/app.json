@@ -8,14 +8,28 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "extra": {
+      "oneSignalAppId": "c28475af-e378-4211-8a2c-cd34c5cd535c"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.lab4",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      },
+      "entitlements": {
+        "aps-environment": "development",
+        "com.apple.security.application-groups": [
+          "group.${ios.bundleIdentifier}.onesignal"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.lab4"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +45,13 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "development",
+          "oneSignalAppId": "c28475af-e378-4211-8a2c-cd34c5cd535c"
         }
       ]
     ],
