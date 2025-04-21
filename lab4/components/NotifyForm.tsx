@@ -14,8 +14,6 @@ export const NotifyForm = () => {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
 
-  const showPicker = () => {};
-
   const sendPushNotification = async (externalId: string) => {
     try {
       const res = await fetch("https://onesignal.com/api/v1/notifications", {
