@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import NotifyForm from "@/components/NotifyForm";
+import { NotifyForm } from "@/components/NotifyForm";
+import { NotifyList } from "@/components/NotifyList";
 
 export default function Index() {
   return (
@@ -10,6 +11,7 @@ export default function Index() {
         <Text style={styles.headerTitle}>To-Do Reminder</Text>
       </View>
       <NotifyForm />
+      <NotifyList />
     </View>
   );
 }

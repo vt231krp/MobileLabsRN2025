@@ -4,7 +4,7 @@ import { OneSignal } from "react-native-onesignal";
 import Constants from "expo-constants";
 import DatePicker from "react-native-date-picker";
 
-export default function NotifyForm() {
+export const NotifyForm = () => {
   const oneSignalAppId = Constants.expoConfig?.extra?.oneSignalAppId;
   const oneSignalApiKey =
     process.env.ONESIGNAL_API_KEY ||
@@ -74,7 +74,7 @@ export default function NotifyForm() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
