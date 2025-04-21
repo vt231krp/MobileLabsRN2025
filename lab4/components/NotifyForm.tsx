@@ -1,60 +1,52 @@
-import {
-  View,
-  StyleSheet,
-  TextInput,
-  Button,
-  Platform,
-  Pressable,
-} from "react-native";
+import { View, StyleSheet, TextInput, Button } from "react-native";
 import { useState } from "react";
-import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
+import { OneSignal } from "react-native-onesignal";
+import Constants from "expo-constants";
+import DatePicker from "react-native-date-picker";
 
 export default function NotifyForm() {
+  const oneSignalAppId = Constants.expoConfig?.extra?.oneSignalAppId;
+  const oneSignalApiKey =
+    process.env.ONESIGNAL_API_KEY ||
+    "os_v2_app_ykchll7dpbbbdcrmzu2mltktltjbl5mh4rnucfvfuyfncfjqgjaowrda6cewh6cogsv5ktlkikqjxsqcjbkloindhsopkdeqxsafanq";
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
 
-  const showPicker = () => {
-    DateTimePickerAndroid.open({
-      value: date,
-      mode: "date",
-      onChange: (_, selectedDate) => {
-        if (selectedDate) {
-          setDate((prev) => {
-            const d = new Date(prev);
-            d.setFullYear(
-              selectedDate.getFullYear(),
-              selectedDate.getMonth(),
-              selectedDate.getDate()
-            );
-            return d;
-          });
-          DateTimePickerAndroid.open({
-            value: date,
-            mode: "time",
-            is24Hour: true,
-            onChange: (_, selectedTime) => {
-              if (selectedTime) {
-                setDate((prev) => {
-                  const t = new Date(prev);
-                  t.setHours(
-                    selectedTime.getHours(),
-                    selectedTime.getMinutes()
-                  );
-                  return t;
-                });
-              }
-            },
-          });
-        }
-      },
-    });
+  const showPicker = () => {};
+
+  const sendPushNotification = async (externalId: string) => {
+    try {
+      const res = await fetch("https://onesignal.com/api/v1/notifications", {
+        method: "POST",
+        headers: {
+          Authorization: `Basic ${oneSignalApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          app_id: oneSignalAppId,
+          headings: { en: name },
+          contents: { en: description },
+          include_external_user_ids: [externalId],
+          send_after: date.toISOString(),
+        }),
+      });
+      const data = await res.json();
+      console.log("Notification sent:", data);
+    } catch (e) {
+      console.error("Push error:", e);
+    }
   };
 
   const handleSubmit = () => {
     console.log("Name:", name);
     console.log("Description:", description);
     console.log("Date:", date.toLocaleString());
+
+    OneSignal.login("vt231_krp");
+
+    sendPushNotification("vt231_krp");
   };
 
   return (
@@ -71,14 +63,12 @@ export default function NotifyForm() {
         value={description}
         placeholder="Description"
       />
-      <Pressable onPress={showPicker} style={{ width: "100%" }}>
-        <TextInput
-          style={styles.input}
-          value={date.toLocaleString()}
-          editable={false}
-          placeholder="Date/Time"
-        />
-      </Pressable>
+      <DatePicker
+        date={date}
+        onDateChange={setDate}
+        mode="datetime"
+        theme="light"
+      />
       <View style={{ width: "100%" }}>
         <Button title="Create Reminder" onPress={handleSubmit} />
       </View>

@@ -11,7 +11,7 @@ export default function RootLayout() {
     OneSignal.Debug.setLogLevel(LogLevel.Verbose);
     OneSignal.initialize(oneSignalAppId);
     OneSignal.Notifications.requestPermission(true);
-  }, []);
+  }, [oneSignalAppId]);
 
   return <Stack screenOptions={{ headerShown: false }} />;
 }
