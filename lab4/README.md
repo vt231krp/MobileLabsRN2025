@@ -1,6 +1,10 @@
-# Welcome to your Expo app 👋
+# Welcome to To Do Reminder 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Features:
+
+1. Create notification;
+2. Review notification;
+3. Cancel notification;
 
 ## Get started
 
@@ -13,5 +17,11 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 2. Start the app
 
    ```bash
-    npx expo start
+    npm run android
    ```
+
+## Screenshots
+
+![screenshot](screenshots/photo_2025-04-22_15-05-40.jpg)
+![screenshot](screenshots/photo_2025-04-22_15-05-36.jpg)
+![screenshot](screenshots/photo_2025-04-22_15-05-32.jpg)
