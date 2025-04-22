@@ -3,23 +3,24 @@ import { useState } from "react";
 import { OneSignal } from "react-native-onesignal";
 import Constants from "expo-constants";
 import DatePicker from "react-native-date-picker";
+import { useNotifyContext } from "@/hooks/useNotifyContext";
 
 export const NotifyForm = () => {
   const oneSignalAppId = Constants.expoConfig?.extra?.oneSignalAppId;
-  const oneSignalApiKey =
-    process.env.ONESIGNAL_API_KEY ||
-    "os_v2_app_ykchll7dpbbbdcrmzu2mltktltjbl5mh4rnucfvfuyfncfjqgjaowrda6cewh6cogsv5ktlkikqjxsqcjbkloindhsopkdeqxsafanq";
+  const oneSignalApiKey = process.env.EXPO_PUBLIC_ONESIGNAL_API_KEY;
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
+
+  const { addNotification } = useNotifyContext();
 
   const sendPushNotification = async (externalId: string) => {
     try {
       const res = await fetch("https://onesignal.com/api/v1/notifications", {
         method: "POST",
         headers: {
-          Authorization: `Basic ${oneSignalApiKey}`,
+          Authorization: `Key ${oneSignalApiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -32,6 +33,18 @@ export const NotifyForm = () => {
       });
       const data = await res.json();
       console.log("Notification sent:", data);
+
+      if (data?.id) {
+        const notification = {
+          id: data.id,
+          name,
+          description,
+          date,
+        };
+        addNotification(notification);
+      } else {
+        console.error("Failed to send notification:", data);
+      }
     } catch (e) {
       console.error("Push error:", e);
     }

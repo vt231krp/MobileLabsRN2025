@@ -53,6 +53,13 @@
           "mode": "development",
           "oneSignalAppId": "c28475af-e378-4211-8a2c-cd34c5cd535c"
         }
+      ],
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
+        }
       ]
     ],
     "experiments": {
