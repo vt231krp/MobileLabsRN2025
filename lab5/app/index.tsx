@@ -1,7 +1,9 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import * as FileSystem from "expo-file-system";
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { formatBytes } from "@/utils/formatUtils";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { Link } from "expo-router";
 
 export default function Index() {
   const [totalDiskCapacity, setTotalDiskCapacity] = useState(0);
@@ -52,6 +54,21 @@ export default function Index() {
           </Text>
         </View>
       </View>
+
+      <Text style={styles.title}>Storage</Text>
+
+      <Link href={"/dir"} style={styles.explore}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <AntDesign name="folder1" size={24} color="black" />
+          <Text style={styles.memoryValue}>Explore</Text>
+        </View>
+      </Link>
     </View>
   );
 }
@@ -59,6 +76,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
   },
   memoryInfo: {
     flexDirection: "row",
@@ -67,7 +85,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 10,
     padding: 10,
-    margin: 10,
   },
   memoryInfoItem: {
     flex: 1,
@@ -82,6 +99,10 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     color: "#111212",
     marginLeft: 15,
-    marginTop: 10,
+  },
+  explore: {
+    backgroundColor: "#ffffff",
+    padding: 10,
+    borderRadius: 10,
   },
 });
