@@ -35,7 +35,10 @@ export const Breadcrumbs = ({ path, onClick }: BreadcrumbsProps) => {
   return (
     <View style={styles.container}>
       {breadcrumbs.map(({ label, path }, index) => (
-        <>
+        <View
+          key={index}
+          style={{ flexDirection: "row", alignItems: "center" }}
+        >
           <Pressable
             key={index}
             onPress={() => onClick(path)}
@@ -51,7 +54,7 @@ export const Breadcrumbs = ({ path, onClick }: BreadcrumbsProps) => {
               style={styles.separator}
             />
           )}
-        </>
+        </View>
       ))}
     </View>
   );

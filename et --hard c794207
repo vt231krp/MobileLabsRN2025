@@ -1,0 +1,286 @@
+[33mcommit c7942077d64d1f8048a5a5acb806838bc2fdc09b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mlab5[m[33m)[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sun Apr 27 12:08:27 2025 +0300
+
+    feat: add gesture handler and modal context
+
+[33mcommit 0481d162bd3b93e834dbbbdab8cd1b7a092c94e4[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sun Apr 27 10:36:44 2025 +0300
+
+    refactor: update no content icon
+
+[33mcommit 8d0e66d127fb9b9bf3ec4cb5a9e056c7cf1c8623[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sun Apr 27 10:33:39 2025 +0300
+
+    refactor: rename route: dir -> explore
+
+[33mcommit 42afd0c2f006e681d212170c7348c24c816df7eb[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Apr 26 20:38:42 2025 +0300
+
+    feat: add file expolorer
+
+[33mcommit a58d01303f0299e977d000a43a090444761d6a70[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Apr 26 15:08:19 2025 +0300
+
+    feat: add memory info
+
+[33mcommit e961df3498f8a58e9675623f1307c6ac14af54ac[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Apr 26 13:36:22 2025 +0300
+
+    init lab5
+
+[33mcommit f1bc8e5960073b56d81efafbcdaf632e54b839a5[m[33m ([m[1;31morigin/lab4[m[33m)[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Tue Apr 22 15:09:35 2025 +0300
+
+    feat: add screenshots and app descriptionin readme.md
+
+[33mcommit 5ea127e6ea4c85aaf562618c22412407d2cdc9ad[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Tue Apr 22 14:48:12 2025 +0300
+
+    feat: add notification list, add cancel notification
+
+[33mcommit df6ef224973b25b2e35176ce8735d4ac60c8b313[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Mon Apr 21 17:53:38 2025 +0300
+
+    refactor: remove unused function
+
+[33mcommit 5a1f2ea0676456bc2a42994be2a4e80d51109826[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Mon Apr 21 17:51:47 2025 +0300
+
+    refactor: remove default component import; feat: add emppty notify list comp
+
+[33mcommit b3a9450a93e060996dd18c9e57939b4ff97c9025[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Mon Apr 21 17:47:15 2025 +0300
+
+    refactor: update date time picker library; feat: send notification after the specific time
+
+[33mcommit 5787b6681b978dd2a108c2b1d164d1418591d4c9[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Apr 19 17:10:08 2025 +0300
+
+    feat: add notify form
+
+[33mcommit 9cd2289c58f374901ba6d934b2a46bbe95da1ff8[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Apr 12 19:39:29 2025 +0300
+
+    init lab4
+
+[33mcommit d26a3bdeb62d9165c6fd26b691254b1dd2808d52[m[33m ([m[1;32m0r[m[33m)[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Apr 12 15:22:26 2025 +0300
+
+    add: readme.md
+
+[33mcommit 83c8ac6a78b3d6c8ff3518e9e6be1c4ae047e297[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Apr 4 19:05:46 2025 +0300
+
+    add: screenshots
+
+[33mcommit 6b7114848ffe99cdf764940fad536640655376e2[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Apr 4 19:02:50 2025 +0300
+
+    fix: left and right swipe
+
+[33mcommit 76f21d63879ab171b36464489f873bd6a9a80e50[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Apr 4 18:57:11 2025 +0300
+
+    add: long press, drag, left swipe, right swipe, resize handles
+
+[33mcommit 2f6425ed3f516a17bfb9c47cf458968f7b1afcfc[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Apr 4 14:14:25 2025 +0300
+
+    add: task context, task page, single and double click handlers
+
+[33mcommit 07546c765c06915cb32c5318bf911cbda6bc5eee[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Apr 4 10:48:19 2025 +0300
+
+    lab3 initial commmit
+
+[33mcommit cb4206a6c154ca07ff04fce670cc28c9a88580fd[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 18:30:24 2025 +0200
+
+    add: readme file
+
+[33mcommit 49c574582eb35dbea73756866977155b6bd9d9f7[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 18:26:30 2025 +0200
+
+    update: readme.md, add: gitignore
+
+[33mcommit 5043ea4b157dd3a001e2bb947072774c3742c1ef[m
+Merge: c1d55b4 2fb0cc8
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 18:25:09 2025 +0200
+
+    place lab2 in their folder
+
+[33mcommit c1d55b4caac2a9db3b08368a67e339a0a8a367ef[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 18:23:07 2025 +0200
+
+    place lab1 to their folder
+
+[33mcommit 2fb0cc8995649ee602f70575e077c7ff614372be[m[33m ([m[1;31mlab2/main[m[33m)[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:46:10 2025 +0200
+
+    add: screenshots
+
+[33mcommit bd8bc65f5a2638f77d740b01bb3b5732f18887d9[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:44:27 2025 +0200
+
+    fix: screen header logo bg
+
+[33mcommit 01fafb83e62890f4b1a4c5ad4b7ebf56dfd06a6e[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:40:49 2025 +0200
+
+    update: text color
+
+[33mcommit f31710a2adb5873e4681693658dce1347b0fbf44[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:39:50 2025 +0200
+
+    update: safety code styles
+
+[33mcommit ff5da66db66d4e0b60af8e9fa84b57c7c9f933e9[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:33:34 2025 +0200
+
+    update: theme provider; add: toggle theme; update: game card styles
+
+[33mcommit 24e7aaf03b1b2180c9f6844328a78d5f2bb760fe[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:13:59 2025 +0200
+
+    update: remove unnecessary labels
+
+[33mcommit f2d397aa6c8ad68396277156b0ef8b6a1ba59f5f[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 17:12:30 2025 +0200
+
+    update: index(store) screen, add infinity scroll
+
+[33mcommit ecf0a05ff8a85247cfe2ab5a4c84050711be8540[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 16:49:43 2025 +0200
+
+    update: profile screen; add: card actions component
+
+[33mcommit eb340aefb6f99b7feae6255620b1ea9f88288742[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 16:12:46 2025 +0200
+
+    add: safety page
+
+[33mcommit d819f0d92aaa7a31a4fa2f61c45a99cfc952457c[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 15:21:14 2025 +0200
+
+    update: chat item, create chat screen
+
+[33mcommit 9547b03ff20992755e0aadb21bfed9261fe4a34b[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 13:01:50 2025 +0200
+
+    add: tabs reusable component
+
+[33mcommit 714afddf38a03ce896fa1ed4fc3ae8b1867e45a1[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 12:20:05 2025 +0200
+
+    add: posts demo data, post card, community page; update: themes
+
+[33mcommit a8cdadbfa626039c7a8ce6e7f747a8fdda88be63[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 10:16:22 2025 +0200
+
+    update: game card, filter button, slider card
+
+[33mcommit b1ce0ba0d32895b4e257757f3a72bb5f10d92811[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 10:03:09 2025 +0200
+
+    update: demo data; add: GameList comp; update: deconstruct GameList and RecSlider;
+
+[33mcommit 8434ab45c2e6bb79ddddb239e54f6a6948fa8143[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 22 08:48:35 2025 +0200
+
+    update: themes; add: rec slider;
+
+[33mcommit 3d3c52572e215b3a683a41a5a0118f326624aac5[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Mar 21 22:46:52 2025 +0200
+
+    update: themes, screenheader styles
+
+[33mcommit 927e51708f08b743f6b6411930aa3b79577f45d8[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Mar 21 22:23:39 2025 +0200
+
+    update: theme context; add: screen header component
+
+[33mcommit 0519ca77659a3f45050276c27d9a45df8ac23e24[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Mar 21 20:25:29 2025 +0200
+
+    remove: unnecessary component from template
+
+[33mcommit 57ef3282f5c26d8bde0d3208dbbbf32d1525c994[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Mar 21 20:14:06 2025 +0200
+
+    update: nav styles
+
+[33mcommit ea87b2ed2b925a553772643c52603b4a10fdbefa[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Mar 21 20:05:10 2025 +0200
+
+    inital commit
+
+[33mcommit 639ff82befe170711b701f956a2a66dccac87969[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Fri Mar 21 19:46:26 2025 +0200
+
+    Initial commit
+    
+    Generated by create-expo-app 3.2.0.
+
+[33mcommit 8aedc970d461975433b30830af50149b408bb6c1[m[33m ([m[1;31mlab1/main[m[33m)[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Sat Mar 15 10:52:38 2025 +0200
+
+    update: README.md
+
+[33mcommit d4d0649142920f7be3b40176ec5f55f25495a9ab[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Thu Mar 6 13:51:25 2025 +0200
+
+    initial commit
+
+[33mcommit 8062ace75ea4a04ff2d4e96abce57264cefdbcd7[m
+Author: romankarbivskyi <romankarbivskyi1@gmail.com>
+Date:   Wed Mar 5 19:32:02 2025 +0200
+
+    Initial commit
+    
+    Generated by create-expo-app 3.2.0.

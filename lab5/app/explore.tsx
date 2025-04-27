@@ -1,134 +1,26 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Alert,
-  FlatList,
-  Pressable,
-} from "react-native";
+import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import * as FileSystem from "expo-file-system";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect } from "react";
 import Feather from "@expo/vector-icons/Feather";
 import { Breadcrumbs, CreateItemForm, File } from "@/components";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useModalContext } from "@/contexts/ModalContext";
+import { FileInfoModal } from "@/components";
+import { useFileContext } from "@/contexts/FileContext";
 
 export default function Explore() {
   const router = useRouter();
-  const [path, setPath] = useState<string | null>("AppData");
-  const [content, setContent] = useState<FileSystem.FileInfo[] | null>(null);
+  const {
+    path,
+    setPath,
+    content,
+    readDir,
+    makeDir,
+    getInfo,
+    handleCreateItem,
+  } = useFileContext();
 
-  const getInfo = useCallback(async (path: string) => {
-    try {
-      const dir = `${FileSystem.documentDirectory}${path}`;
-      const directoryInfo = await FileSystem.getInfoAsync(dir, {
-        size: true,
-      });
-      return directoryInfo;
-    } catch (err) {
-      console.error("Error getting directory info:", err);
-      Alert.alert("Error", "Error getting directory info", [{ text: "OK" }]);
-    }
-  }, []);
-
-  const readDir = useCallback(async (path: string) => {
-    try {
-      const dir = `${FileSystem.documentDirectory}${path}`;
-      const dirInfo = await FileSystem.readDirectoryAsync(dir);
-
-      if (dirInfo.length > 0) {
-        const fileInfo = await Promise.all(
-          dirInfo.map(async (item) => {
-            const itemInfo = await FileSystem.getInfoAsync(`${dir}/${item}`);
-            return itemInfo;
-          })
-        );
-        setContent(fileInfo);
-      } else {
-        setContent([]);
-      }
-    } catch (err) {
-      console.error("Error reading directory:", err);
-      Alert.alert("Error", "Error reading directory", [{ text: "OK" }]);
-    }
-  }, []);
-
-  const makeDir = useCallback(async (name: string) => {
-    try {
-      const dir = `${FileSystem.documentDirectory}${name}`;
-      const dirInfo = await FileSystem.getInfoAsync(dir, { size: true });
-      if (!dirInfo.exists) {
-        await FileSystem.makeDirectoryAsync(dir, { intermediates: true });
-        console.log("Directory created:", dir);
-        Alert.alert("Success", "Directory already created", [{ text: "OK" }]);
-      } else {
-        console.log("Directory already exists:", dir);
-        Alert.alert("Error", "Directory already exists", [{ text: "OK" }]);
-      }
-    } catch (err) {
-      console.error("Error creating directory:", err);
-      Alert.alert("Error", "Error creating directory", [{ text: "OK" }]);
-    }
-  }, []);
-
-  const handleCreateFile = useCallback(
-    async (name: string) => {
-      try {
-        const file = `${FileSystem.documentDirectory}${path}/${name}`;
-        const fileInfo = await FileSystem.getInfoAsync(file, { size: true });
-        if (!fileInfo.exists) {
-          await FileSystem.writeAsStringAsync(file, "Hello World", {
-            encoding: FileSystem.EncodingType.UTF8,
-          });
-          console.log("File created:", file);
-          Alert.alert("Success", "File created", [{ text: "OK" }]);
-
-          await readDir(path || "");
-        } else {
-          console.log("File already exists:", file);
-          Alert.alert("Error", "File already exists", [{ text: "OK" }]);
-        }
-      } catch (err) {
-        console.error("Error creating file:", err);
-        Alert.alert("Error", "Error creating file", [{ text: "OK" }]);
-      }
-    },
-    [path, readDir]
-  );
-
-  const handleCreateDir = useCallback(
-    async (name: string) => {
-      try {
-        const dir = `${FileSystem.documentDirectory}${path}/${name}`;
-        const dirInfo = await FileSystem.getInfoAsync(dir, { size: true });
-        if (!dirInfo.exists) {
-          await FileSystem.makeDirectoryAsync(dir, { intermediates: true });
-          console.log("Directory created:", dir);
-          Alert.alert("Success", "Directory created", [{ text: "OK" }]);
-
-          await readDir(path || "");
-        } else {
-          console.log("Directory already exists:", dir);
-          Alert.alert("Error", "Directory already exists", [{ text: "OK" }]);
-        }
-      } catch (err) {
-        console.error("Error creating directory:", err);
-        Alert.alert("Error", "Error creating directory", [{ text: "OK" }]);
-      }
-    },
-    [path, readDir]
-  );
-
-  const handleCreateItem = useCallback(
-    async (name: string, isDirectory: boolean) => {
-      if (isDirectory) {
-        await handleCreateDir(name);
-      } else {
-        await handleCreateFile(name);
-      }
-    },
-    [handleCreateDir, handleCreateFile]
-  );
+  const { setContent: setModalContent, setIsVisible } = useModalContext();
 
   const handleGoUp = () => {
     if (!path) {
@@ -182,7 +74,14 @@ export default function Explore() {
         <FlatList
           data={content}
           renderItem={({ item }) => (
-            <File info={item} onClick={(p, isDir) => isDir && setPath(p)} />
+            <File
+              info={item}
+              onClick={(p, isDir) => isDir && setPath(p)}
+              onLongPress={() => {
+                setModalContent(() => <FileInfoModal info={item} />);
+                setIsVisible(true);
+              }}
+            />
           )}
           ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
           keyExtractor={({ isDirectory, uri }) =>

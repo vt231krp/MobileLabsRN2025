@@ -3,52 +3,41 @@ import * as FileSystem from "expo-file-system";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
-import { GestureDetector, Gesture } from "react-native-gesture-handler";
 
 interface FileProps {
   info: FileInfo;
   onClick: (path: string, isDirectory: boolean) => void;
+  onLongPress?: () => void;
 }
 
-export const File = ({ info, onClick }: FileProps) => {
-  // @ts-ignore
-  const { uri, isDirectory, modificationTime } = info;
-
+export const File = ({ info, onClick, onLongPress }: FileProps) => {
+  const { uri, isDirectory } = info;
   const fileName = uri.split("/").pop() || "Unknown File";
 
-  const longPressGestrure = Gesture.LongPress().onEnd(() => {
-    console.log("Long press ended");
-  });
+  const getCleanPath = (uri: string) => {
+    return uri.replace(FileSystem.documentDirectory || "", "");
+  };
 
   console.log("File info:", info);
 
   return (
-    <GestureDetector gesture={longPressGestrure}>
-      <TouchableHighlight
-        underlayColor="#c2c2c2"
-        style={{ borderRadius: 10 }}
-        onPress={() =>
-          onClick(
-            uri.replace(FileSystem.documentDirectory ?? "", ""),
-            isDirectory
-          )
-        }
-      >
-        <View style={styles.container}>
-          <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
-            {isDirectory ? (
-              <Entypo name="folder" size={24} color="#FFD700" />
-            ) : (
-              <AntDesign name="filetext1" size={24} color="black" />
-            )}
-            <Text>{fileName}</Text>
-          </View>
-          <Text style={styles.date}>
-            {new Date(modificationTime).toLocaleString()}
-          </Text>
+    <TouchableHighlight
+      underlayColor="#c2c2c2"
+      style={{ borderRadius: 10 }}
+      onPress={() => onClick(getCleanPath(uri), !!isDirectory)}
+      onLongPress={onLongPress}
+    >
+      <View style={styles.container}>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+          {isDirectory ? (
+            <Entypo name="folder" size={24} color="#FFD700" />
+          ) : (
+            <AntDesign name="filetext1" size={24} color="black" />
+          )}
+          <Text>{fileName}</Text>
         </View>
-      </TouchableHighlight>
-    </GestureDetector>
+      </View>
+    </TouchableHighlight>
   );
 };
 
@@ -61,9 +50,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     padding: 10,
     borderRadius: 10,
-  },
-  date: {
-    fontSize: 12,
-    color: "#888",
   },
 });
