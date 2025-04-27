@@ -7,6 +7,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { useModalContext } from "@/contexts/ModalContext";
 import { FileInfoModal } from "@/components";
 import { useFileContext } from "@/contexts/FileContext";
+import * as FileSystem from "expo-file-system";
 
 export default function Explore() {
   const router = useRouter();
@@ -55,6 +56,34 @@ export default function Explore() {
     }
   }, [path]);
 
+  const getListData = () => {
+    if (!path || path === "AppData") {
+      return content;
+    }
+
+    const parentItem: FileSystem.FileInfo = {
+      uri: "parent_directory",
+      isDirectory: true,
+      size: 0,
+      modificationTime: 0,
+      exists: true,
+      name: "..",
+    } as FileSystem.FileInfo;
+
+    return [parentItem, ...(content || [])];
+  };
+
+  const handleItemClick = (p: string, isDir: boolean) => {
+    if (p === "parent_directory") {
+      handleGoUp();
+      return;
+    }
+
+    if (isDir) {
+      setPath(p);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -72,20 +101,33 @@ export default function Explore() {
 
       {content && content.length > 0 ? (
         <FlatList
-          data={content}
-          renderItem={({ item }) => (
-            <File
-              info={item}
-              onClick={(p, isDir) => isDir && setPath(p)}
-              onLongPress={() => {
-                setModalContent(() => <FileInfoModal info={item} />);
-                setIsVisible(true);
-              }}
-            />
-          )}
+          data={getListData()}
+          renderItem={({ item }) => {
+            if (item.uri === "parent_directory") {
+              const parentInfo: FileSystem.FileInfo = {
+                ...item,
+                uri: `${FileSystem.documentDirectory}..`,
+              };
+
+              return <File info={parentInfo} onClick={() => handleGoUp()} />;
+            }
+
+            return (
+              <File
+                info={item}
+                onClick={handleItemClick}
+                onLongPress={() => {
+                  setModalContent(() => <FileInfoModal info={item} />);
+                  setIsVisible(true);
+                }}
+              />
+            );
+          }}
           ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-          keyExtractor={({ isDirectory, uri }) =>
-            `${isDirectory ? "dir" : "file"}-${uri}`
+          keyExtractor={(item) =>
+            item.uri === "parent_directory"
+              ? "parent_directory"
+              : `${item.isDirectory ? "dir" : "file"}-${item.uri}`
           }
         />
       ) : (
