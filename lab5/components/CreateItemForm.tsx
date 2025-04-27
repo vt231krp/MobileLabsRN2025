@@ -32,8 +32,20 @@ const CreateItemModal = ({ onCreate }: CreateItemFormProps) => {
         <>
           <Text>Choose item type:</Text>
           <View style={{ flexDirection: "row", gap: 10 }}>
-            <Button title="File" onPress={() => setIsDirectory(false)} />
-            <Button title="Directory" onPress={() => setIsDirectory(true)} />
+            <Button
+              title="File"
+              onPress={() => {
+                setIsDirectory(false);
+                setItemName("new_file.txt");
+              }}
+            />
+            <Button
+              title="Directory"
+              onPress={() => {
+                setIsDirectory(true);
+                setItemName("");
+              }}
+            />
           </View>
         </>
       ) : (
@@ -44,8 +56,14 @@ const CreateItemModal = ({ onCreate }: CreateItemFormProps) => {
             placeholder={`${isDirectory ? "Directory" : "File"} name`}
             value={itemName}
             onChangeText={setItemName}
+            autoFocus={!isDirectory}
+            selectTextOnFocus={!isDirectory}
           />
-          <Button title="Create" onPress={handleCreate} />
+          <Button
+            title="Create"
+            onPress={handleCreate}
+            disabled={!itemName.trim()}
+          />
         </>
       )}
     </View>
