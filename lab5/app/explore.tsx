@@ -13,7 +13,7 @@ import Feather from "@expo/vector-icons/Feather";
 import { Breadcrumbs, CreateItemForm, File } from "@/components";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
-export default function Directory() {
+export default function Explore() {
   const router = useRouter();
   const [path, setPath] = useState<string | null>("AppData");
   const [content, setContent] = useState<FileSystem.FileInfo[] | null>(null);
@@ -69,11 +69,6 @@ export default function Directory() {
       console.error("Error creating directory:", err);
       Alert.alert("Error", "Error creating directory", [{ text: "OK" }]);
     }
-  }, []);
-
-  const handleChangeDir = useCallback((path: string, isDirectory?: boolean) => {
-    if (!isDirectory) return;
-    setPath(path);
   }, []);
 
   const handleCreateFile = useCallback(
@@ -135,7 +130,6 @@ export default function Directory() {
     [handleCreateDir, handleCreateFile]
   );
 
-  // go up one level in the current directory
   const handleGoUp = () => {
     if (!path) {
       router.back();
@@ -146,7 +140,6 @@ export default function Directory() {
       const parent = parts.slice(0, -1).join("/");
       setPath(parent);
     } else {
-      // already at root of this stack
       router.back();
     }
   };

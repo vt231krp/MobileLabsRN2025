@@ -1,8 +1,8 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import * as FileSystem from "expo-file-system";
 import { useEffect, useState } from "react";
 import { formatBytes } from "@/utils/formatUtils";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { Entypo } from "@expo/vector-icons";
 import { Link } from "expo-router";
 
 export default function Index() {
@@ -57,7 +57,7 @@ export default function Index() {
 
       <Text style={styles.title}>Storage</Text>
 
-      <Link href={"/dir"} style={styles.explore}>
+      <Link href={"/explore"} style={styles.explore}>
         <View
           style={{
             flexDirection: "row",
@@ -65,8 +65,9 @@ export default function Index() {
             gap: 10,
           }}
         >
-          <AntDesign name="folder1" size={24} color="black" />
-          <Text style={styles.memoryValue}>Explore</Text>
+          <Entypo name="folder" size={24} color="#FFD700" />
+
+          <Text style={styles.exploreLabel}>Explore</Text>
         </View>
       </Link>
     </View>
@@ -99,10 +100,15 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     color: "#111212",
     marginLeft: 15,
+    marginBottom: 5,
   },
   explore: {
     backgroundColor: "#ffffff",
     padding: 10,
     borderRadius: 10,
+  },
+  exploreLabel: {
+    fontSize: 18,
+    fontWeight: 600,
   },
 });
