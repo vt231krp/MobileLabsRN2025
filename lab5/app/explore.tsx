@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Pressable,
+  Alert,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { useEffect } from "react";
 import Feather from "@expo/vector-icons/Feather";
@@ -81,6 +88,14 @@ export default function Explore() {
 
     if (isDir) {
       setPath(p);
+      return;
+    }
+
+    const fileExtension = p.split(".").pop();
+    if (fileExtension === "txt") {
+      router.push(`/editor?path=${p}`);
+    } else {
+      Alert.alert("Error", "Unsupported file type", [{ text: "OK" }]);
     }
   };
 
@@ -99,42 +114,36 @@ export default function Explore() {
 
       <Breadcrumbs path={path ?? ""} onClick={(p) => setPath(p)} />
 
-      {content && content.length > 0 ? (
-        <FlatList
-          data={getListData()}
-          renderItem={({ item }) => {
-            if (item.uri === "parent_directory") {
-              const parentInfo: FileSystem.FileInfo = {
-                ...item,
-                uri: `${FileSystem.documentDirectory}..`,
-              };
+      <FlatList
+        data={getListData()}
+        renderItem={({ item }) => {
+          if (item.uri === "parent_directory") {
+            const parentInfo: FileSystem.FileInfo = {
+              ...item,
+              uri: `${FileSystem.documentDirectory}..`,
+            };
 
-              return <File info={parentInfo} onClick={() => handleGoUp()} />;
-            }
-
-            return (
-              <File
-                info={item}
-                onClick={handleItemClick}
-                onLongPress={() => {
-                  setModalContent(() => <FileInfoModal info={item} />);
-                  setIsVisible(true);
-                }}
-              />
-            );
-          }}
-          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-          keyExtractor={(item) =>
-            item.uri === "parent_directory"
-              ? "parent_directory"
-              : `${item.isDirectory ? "dir" : "file"}-${item.uri}`
+            return <File info={parentInfo} onClick={() => handleGoUp()} />;
           }
-        />
-      ) : (
-        <View style={styles.noContent}>
-          <AntDesign name="folderopen" size={100} color="#c2c2c2" />
-        </View>
-      )}
+
+          return (
+            <File
+              info={item}
+              onClick={handleItemClick}
+              onLongPress={() => {
+                setModalContent(() => <FileInfoModal info={item} />);
+                setIsVisible(true);
+              }}
+            />
+          );
+        }}
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+        keyExtractor={(item) =>
+          item.uri === "parent_directory"
+            ? "parent_directory"
+            : `${item.isDirectory ? "dir" : "file"}-${item.uri}`
+        }
+      />
     </View>
   );
 }
