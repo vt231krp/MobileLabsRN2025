@@ -191,7 +191,7 @@ export default function Explore() {
         />
       ) : (
         <View style={styles.noContent}>
-          <AntDesign name="frowno" size={100} color="#c2c2c2" />
+          <AntDesign name="folderopen" size={100} color="#c2c2c2" />
         </View>
       )}
     </View>
