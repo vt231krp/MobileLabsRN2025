@@ -1,35 +1,27 @@
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { Children, ReactNode } from "react";
 import { View, Modal, StyleSheet, TouchableHighlight } from "react-native";
+import { useModalContext } from "@/contexts/ModalContext";
 
-interface ModalViewProps {
-  modalVisible: boolean;
-  onClose: () => void;
-  children: ReactNode;
-}
+export const ModalView = () => {
+  const { content, isVisible, setIsVisible } = useModalContext();
 
-export const ModalView = ({
-  modalVisible,
-  onClose,
-  children,
-}: ModalViewProps) => {
   return (
     <Modal
       animationType="fade"
       transparent
-      visible={modalVisible}
-      onRequestClose={onClose}
+      visible={isVisible}
+      onRequestClose={() => setIsVisible(false)}
     >
       <View style={styles.overlay}>
         <View style={styles.modalContent}>
           <TouchableHighlight
             style={styles.closeButton}
-            onPress={onClose}
+            onPress={() => setIsVisible(false)}
             underlayColor="#c2c2c2"
           >
             <AntDesign name="closesquareo" size={24} color="black" />
           </TouchableHighlight>
-          {children}
+          {content}
         </View>
       </View>
     </Modal>
