@@ -138,11 +138,7 @@ export default function Explore() {
           );
         }}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
-        keyExtractor={(item) =>
-          item.uri === "parent_directory"
-            ? "parent_directory"
-            : `${item.isDirectory ? "dir" : "file"}-${item.uri}`
-        }
+        keyExtractor={(item) => item.uri}
       />
     </View>
   );
